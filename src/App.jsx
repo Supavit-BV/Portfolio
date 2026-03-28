@@ -9,13 +9,10 @@ function App() {
       setMousePos({ x: e.clientX, y: e.clientY })
 
       // Update glow position
-      const glow = document.querySelector('.app-container::before')
-      if (glow) {
-        const element = document.querySelector('.app-container')
-        if (element) {
-          element.style.setProperty('--mouse-x', `${e.clientX}px`)
-          element.style.setProperty('--mouse-y', `${e.clientY}px`)
-        }
+      const element = document.querySelector('.app-container')
+      if (element) {
+        element.style.setProperty('--mouse-x', `${e.clientX}px`)
+        element.style.setProperty('--mouse-y', `${e.clientY}px`)
       }
     }
 
@@ -42,7 +39,6 @@ function App() {
               <div className="sidebar-title-group">
                 <h1 className="sidebar-title">Supavit</h1>
                 <nav className="sidebar-nav-inline" aria-label="Quick nav">
-                  <a href="#about">About</a>
                 </nav>
               </div>
             </div>
@@ -63,27 +59,18 @@ function App() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('offerings')}
-                  className={`nav-link ${activeNav === 'offerings' ? 'active' : ''}`}
+                  onClick={() => scrollToSection('projects')}
+                  className={`nav-link ${activeNav === 'projects' ? 'active' : ''}`}
                 >
                   <span className="nav-indicator"></span>
-                  Offerings
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('collections')}
-                  className={`nav-link ${activeNav === 'collections' ? 'active' : ''}`}
-                >
-                  <span className="nav-indicator"></span>
-                  Collections
+                  Projects
                 </button>
               </li>
             </ul>
           </nav>
 
           <ul className="social-links">
-            <li><a href="mailto:info@supavit.be" title="Email" aria-label="Email">info@supavit.be</a></li>
+            {/* <li><a href="mailto:info@supavit.be" title="Email" aria-label="Email">info@supavit.be</a></li> */}
           </ul>
         </div>
       </header>
@@ -100,50 +87,9 @@ function App() {
           </p>
         </section>
 
-        <section id="offerings" className="content-section">
-          <h2 className="section-title">Offerings</h2>
-          <ul className="offerings-list">
-            <li className="offering-item">
-              <div className="offering-header">
-                <h3>AI-Enhanced Blends</h3>
-              </div>
-              <p className="offering-description">Signature spice and herb combinations optimized through machine learning for maximum flavor impact and consistency.</p>
-              <ul className="tags">
-                <li className="tag">Artisanal</li>
-                <li className="tag">AI-Optimized</li>
-                <li className="tag">100% Natural</li>
-              </ul>
-            </li>
-
-            <li className="offering-item">
-              <div className="offering-header">
-                <h3>Automated Culinary Strategy</h3>
-              </div>
-              <p className="offering-description">AI-powered consulting for food brands and restaurants. We analyze flavor profiles, predict market trends, and optimize recipes at scale.</p>
-              <ul className="tags">
-                <li className="tag">Professional</li>
-                <li className="tag">AI-Driven</li>
-                <li className="tag">Data-Backed</li>
-              </ul>
-            </li>
-
-            <li className="offering-item">
-              <div className="offering-header">
-                <h3>Flavor Innovation Lab</h3>
-              </div>
-              <p className="offering-description">Masterclasses and workshops exploring the intersection of culinary arts and AI automation for modern flavor creation.</p>
-              <ul className="tags">
-                <li className="tag">Innovation</li>
-                <li className="tag">Workshops</li>
-                <li className="tag">AI & Food</li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-
-        <section id="collections" className="content-section">
-          <h2 className="section-title">Collections</h2>
-          <ul className="collections-list">
+        <section id="projects" className="content-section">
+          <h2 className="section-title">Projects</h2>
+          <ul className="projects-list">
             <li className="collection-item">
               <div className="collection-image">
                 <img src="/assets/Icon_BG_Supavit.png" alt="Heritage Collection" />
@@ -177,7 +123,7 @@ function App() {
         </section>
 
         <footer className="content-footer">
-          <p>Designed and crafted by Supavit • © 2024</p>
+          <p>Designed and crafted by Supavit • © 2025</p>
         </footer>
       </main>
     </div>
