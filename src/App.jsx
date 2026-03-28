@@ -37,10 +37,17 @@ function App() {
       <header className="sidebar">
         <div className="sidebar-content">
           <div className="sidebar-intro">
-            <img src="/assets/Icon_Supavit.png" alt="Supavit logo" className="sidebar-logo" />
-            <h1 className="sidebar-title">Supavit</h1>
-            <h2 className="sidebar-subtitle">AI Flavor Automation</h2>
-            <p className="sidebar-description">We create bold, authentic flavor experiences enhanced by intelligent automation. Elevating culinary moments through AI-driven innovation.</p>
+            <div className="sidebar-header">
+              <img src="/assets/Icon_Supavit.png" alt="Supavit logo" className="sidebar-logo" />
+              <div className="sidebar-title-group">
+                <h1 className="sidebar-title">Supavit</h1>
+                <nav className="sidebar-nav-inline" aria-label="Quick nav">
+                  <a href="#about">About</a>
+                </nav>
+              </div>
+            </div>
+            <h2 className="sidebar-subtitle">AI automators</h2>
+            <p className="sidebar-description">We enhance and automate your data and needs through AI-driven innovation.</p>
           </div>
 
           <nav className="sidebar-nav">
@@ -76,7 +83,6 @@ function App() {
           </nav>
 
           <ul className="social-links">
-            <li><a href="#" title="Instagram" aria-label="Instagram">@supavit</a></li>
             <li><a href="mailto:info@supavit.be" title="Email" aria-label="Email">info@supavit.be</a></li>
           </ul>
         </div>

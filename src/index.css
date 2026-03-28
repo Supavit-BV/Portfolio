@@ -86,35 +86,69 @@ body {
   margin-bottom: 50px;
 }
 
-.sidebar-logo {
-  width: 60px;
-  height: 60px;
+.sidebar-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 20px;
-  border-radius: 8px;
+}
+
+.sidebar-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sidebar-title-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .sidebar-title {
   font-size: 32px;
   font-weight: 700;
   color: var(--secondary);
-  margin-bottom: 8px;
+  margin: 0;
   letter-spacing: 1px;
+  line-height: 1;
+}
+
+.sidebar-nav-inline {
+  display: flex;
+}
+
+.sidebar-nav-inline a {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar-nav-inline a:hover {
+  color: var(--primary);
 }
 
 .sidebar-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--primary);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .sidebar-description {
-  font-size: 15px;
-  color: var(--muted-text);
+  font-size: 14px;
+  color: var(--secondary);
   line-height: 1.7;
   max-width: 300px;
+  opacity: 0.9;
 }
 
 /* Navigation */
@@ -384,15 +418,20 @@ body {
     height: auto;
     padding: 40px 30px;
     border-bottom: 2px solid rgba(221, 218, 204, 0.2);
+    z-index: 2;
   }
 
   .sidebar-logo {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
 
   .sidebar-title {
     font-size: 28px;
+  }
+
+  .sidebar-nav-inline {
+    display: none;
   }
 
   .main-content {
@@ -418,21 +457,30 @@ body {
     max-width: 100%;
   }
 
+  .sidebar-header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
   .sidebar-logo {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
 
   .sidebar-title {
     font-size: 24px;
   }
 
+  .sidebar-title-group {
+    gap: 16px;
+  }
+
   .sidebar-subtitle {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .sidebar-description {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .nav-link {
