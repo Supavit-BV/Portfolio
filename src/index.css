@@ -375,6 +375,113 @@ body {
   opacity: 0.85;
 }
 
+.view-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.view-all-button {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--muted-text);
+  padding: 6px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.view-all-button:hover {
+  background: var(--primary);
+  color: var(--secondary);
+  box-shadow: var(--primary);
+}
+
+.projects-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.collection-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  border: 1px solid rgba(221, 218, 204, 0.05);
+}
+
+.collection-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-5px);
+}
+
+.collection-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Dit duwt de tags naar beneden */
+}
+
+.project-description {
+  font-size: 14px;
+  color: var(--secondary);
+  opacity: 0.8;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* De Tags onderaan */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.project-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  background: var(--primary);
+  color: var(--secondary);
+  border: 0.5px solid var(--muted-text);
+  border-radius: 20px;
+}
+
+/* De "View All" Knop */
+.view-all-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.view-all-button {
+  border: 1px solid var(--tag-text);
+  color: var(--secondary);
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-all-button:hover {
+  background: var(--primary);
+  color: var(--muted-text);
+}
+
+
 /* Responsive Design */
 @media (min-width: 1024px) {
   /* Desktop layout already set above */

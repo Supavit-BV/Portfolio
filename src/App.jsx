@@ -102,35 +102,72 @@ function App() {
         <section id="projects" className="content-section">
           <h2 className="section-title">Projects</h2>
           <ul className="projects-list">
-            <li className="collection-item">
+           <li className="collection-item">
               <div className="collection-image">
-                <img src="/assets/Icon_BG_Supavit.png" alt="Heritage Collection" />
+                <img src="/assets/Icon_BG_Supavit.png" alt="Video Pipeline" />
               </div>
               <div className="collection-info">
-                <h3>Heritage Collection</h3>
-                <p>Time-tested recipes inspired by culinary traditions from around the world.</p>
+                <h3>Automated Video Engine</h3>
+                <p>A sophisticated n8n-based pipeline that automates end-to-end video editing and asset assembly.</p>
+                <div className="project-tags">
+                  <span>n8n</span>
+                  <span>FFmpeg</span>
+                  <span>AI</span>
+                </div>
               </div>
             </li>
 
             <li className="collection-item">
               <div className="collection-image">
-                <img src="/assets/Icon_BG_Supavit.png" alt="Modern Essentials" />
+                <img src="/assets/Icon_BG_Supavit.png" alt="Neural Content Pipeline" />
               </div>
               <div className="collection-info">
-                <h3>Modern Essentials</h3>
-                <p>Contemporary flavor profiles designed for the modern kitchen.</p>
+                <h3>Neural Content Pipeline</h3>
+                <p>An autonomous system that generates, formats, and schedules multi-platform content. By leveraging LLMs for research and creative writing, it maintains a consistent brand voice without manual intervention.</p>
+                <div className="project-tags">
+                  <span>n8n</span>
+                  <span>LLM</span>
+                  <span>AI</span>
+                </div>
               </div>
             </li>
 
             <li className="collection-item">
               <div className="collection-image">
-                <img src="/assets/Icon_BG_Supavit.png" alt="Signature Series" />
+                <img src="/assets/Icon_BG_Supavit.png" alt="Intelligence Dashboards" />
               </div>
               <div className="collection-info">
-                <h3>Signature Series</h3>
-                <p>Exclusive, limited-edition flavors created for discerning palates.</p>
+                <h3>Intelligence Dashboards</h3>
+                <p>Custom pipelines that transform fragmented raw data into real-time, actionable insights. Automatically fetching, cleaning, and visualizing data to empower data-driven decision-making.</p>
+                <div className="project-tags">
+                  <span>Airflow</span>
+                  <span>Automation</span>
+                  <span>streamlit</span>
+                </div>
               </div>
             </li>
+
+             <li className="collection-item">
+              <div className="collection-image">
+                <img src="/assets/Icon_BG_Supavit.png" alt="Predictive Analytics Engine" />
+              </div>
+              <div className="collection-info">
+                <h3>Predictive Analytics Engine</h3>
+                <p>Time-series prediction pipelines designed to forecast business trends and customer behavior. Utilizing machine learning models to turn historical data into proactive business strategies.</p>
+                <div className="project-tags">
+                  <span>Scikit-learn</span>
+                  <span>Power BI</span>
+                  <span>Machine Learning</span>
+                </div>
+              </div>
+            </li>
+
+            <div className="view-all-container">
+              <button className="view-all-button" onClick={() => {/* Hier komt je pop-up logica */}}>
+                View Full Project Archive
+              </button>
+            </div>
+
           </ul>
         </section>
 
