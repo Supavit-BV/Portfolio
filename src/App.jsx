@@ -3,8 +3,8 @@ function App() {
     <div className="page-wrapper">
       <header className="header">
         <div className="header-content">
-          <img src="/assets/Icon_Supavit.png" alt="Supavit the flavico" className="logo" />
-          <h1 className="brand-name">Supavit the flavico</h1>
+          <img src="/assets/Icon_Supavit.png" alt="Supavit" className="logo" />
+          <h1 className="brand-name">Supavit</h1>
         </div>
       </header>
 
@@ -16,7 +16,7 @@ function App() {
 
         <section className="about">
           <h2>Our Brand</h2>
-          <p>Supavit the flavico is dedicated to creating exceptional flavor experiences. With our curated selection and commitment to quality, we transform ordinary meals into extraordinary culinary moments.</p>
+          <p>Supavit is dedicated to creating exceptional flavor experiences. With our curated selection and commitment to quality, we transform ordinary meals into extraordinary culinary moments.</p>
         </section>
 
         <section className="features">
@@ -38,7 +38,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2024 Supavit the flavico. All rights reserved.</p>
+        <p>&copy; 2024 Supavit. All rights reserved.</p>
       </footer>
     </div>
   )
