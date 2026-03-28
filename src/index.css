@@ -268,6 +268,22 @@ body {
   opacity: 0.95;
 }
 
+#about .section-text {
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  margin-bottom: 28px;
+  line-height: 2;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#about .section-text + .section-text {
+  margin-top: 1.6rem;
+}
+
 .highlight {
   color: var(--secondary);
   font-weight: 600;
@@ -382,6 +398,7 @@ body {
   .app-container {
     grid-template-columns: 1fr;
     gap: 0;
+    padding: 0 16px;
   }
 
   .app-container::before {
@@ -392,9 +409,10 @@ body {
     position: relative;
     sticky: none;
     height: auto;
-    padding: 160px 160px;
+    padding: 30px 20px;
     border-bottom: 2px solid rgba(221, 218, 204, 0.2);
     z-index: 3;
+    width: calc(100% - 0px);
   }
 
   .sidebar-logo {
@@ -429,8 +447,16 @@ body {
 }
 
 @media (max-width: 640px) {
+  .app-container {
+    padding: 0 10px;
+  }
+
   .sidebar {
-    padding: 30px 20px;
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 14px;
+    border-bottom: 1px solid rgba(221, 218, 204, 0.18);
   }
 
   .sidebar-content {
@@ -486,15 +512,33 @@ body {
     margin-bottom: 80px;
   }
 
+  #about .section-text {
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    margin-bottom: 28px;
+    line-height: 2;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  #about .section-text + .section-text {
+    margin-top: 1.6rem;
+  }
+
   .section-title {
-    font-size: 20px;
-    margin-bottom: 24px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
   }
 
   .section-text {
-    font-size: 14px;
-    margin-bottom: 24px;
-    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 22px;
+    line-height: 1.9;
+    max-width: 100%;
   }
 
 
