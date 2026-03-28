@@ -1,7 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [activeNav, setActiveNav] = useState('about')
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+
+      // Update glow position
+      const glow = document.querySelector('.app-container::before')
+      if (glow) {
+        const element = document.querySelector('.app-container')
+        if (element) {
+          element.style.setProperty('--mouse-x', `${e.clientX}px`)
+          element.style.setProperty('--mouse-y', `${e.clientY}px`)
+        }
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   const scrollToSection = (id) => {
     setActiveNav(id)
@@ -19,8 +39,8 @@ function App() {
           <div className="sidebar-intro">
             <img src="/assets/Icon_Supavit.png" alt="Supavit logo" className="sidebar-logo" />
             <h1 className="sidebar-title">Supavit</h1>
-            <h2 className="sidebar-subtitle">Flavor Craftsman</h2>
-            <p className="sidebar-description">I create bold, authentic flavor experiences that elevate everyday moments into culinary memories.</p>
+            <h2 className="sidebar-subtitle">AI Flavor Automation</h2>
+            <p className="sidebar-description">We create bold, authentic flavor experiences enhanced by intelligent automation. Elevating culinary moments through AI-driven innovation.</p>
           </div>
 
           <nav className="sidebar-nav">
@@ -57,7 +77,7 @@ function App() {
 
           <ul className="social-links">
             <li><a href="#" title="Instagram" aria-label="Instagram">@supavit</a></li>
-            <li><a href="#" title="Email" aria-label="Email">hello@supavit.com</a></li>
+            <li><a href="mailto:info@supavit.be" title="Email" aria-label="Email">info@supavit.be</a></li>
           </ul>
         </div>
       </header>
@@ -67,10 +87,10 @@ function App() {
         <section id="about" className="content-section">
           <h2 className="section-title">About</h2>
           <p className="section-text">
-            Supavit is about <span className="highlight">passion for flavor</span>. Every creation tells a story of meticulous ingredient selection, time-honored techniques, and an unwavering commitment to excellence.
+            Supavit is about <span className="highlight">passion for flavor</span> powered by <span className="highlight">intelligent automation</span>. Every creation tells a story of meticulous ingredient selection, time-honored techniques, and cutting-edge AI optimization.
           </p>
           <p className="section-text">
-            With years of experience in culinary arts, I've developed a distinctive approach to flavor curation that honors tradition while embracing innovation. From sourcing premium ingredients to perfecting recipes, every detail matters.
+            With years of experience in culinary arts, we've developed a distinctive approach to flavor curation that honors tradition while embracing innovation. From sourcing premium ingredients to perfecting recipes through AI-driven analysis, every detail matters.
           </p>
         </section>
 
@@ -79,37 +99,37 @@ function App() {
           <ul className="offerings-list">
             <li className="offering-item">
               <div className="offering-header">
-                <h3>Signature Blends</h3>
+                <h3>AI-Enhanced Blends</h3>
               </div>
-              <p className="offering-description">Carefully curated spice and herb combinations designed to transform any dish into something extraordinary.</p>
+              <p className="offering-description">Signature spice and herb combinations optimized through machine learning for maximum flavor impact and consistency.</p>
               <ul className="tags">
                 <li className="tag">Artisanal</li>
-                <li className="tag">Hand-Blended</li>
+                <li className="tag">AI-Optimized</li>
                 <li className="tag">100% Natural</li>
               </ul>
             </li>
 
             <li className="offering-item">
               <div className="offering-header">
-                <h3>Culinary Consultations</h3>
+                <h3>Automated Culinary Strategy</h3>
               </div>
-              <p className="offering-description">Expert guidance for restaurants, chefs, and food brands looking to elevate their flavor profiles.</p>
+              <p className="offering-description">AI-powered consulting for food brands and restaurants. We analyze flavor profiles, predict market trends, and optimize recipes at scale.</p>
               <ul className="tags">
                 <li className="tag">Professional</li>
-                <li className="tag">Bespoke</li>
-                <li className="tag">Strategic</li>
+                <li className="tag">AI-Driven</li>
+                <li className="tag">Data-Backed</li>
               </ul>
             </li>
 
             <li className="offering-item">
               <div className="offering-header">
-                <h3>Flavor Education</h3>
+                <h3>Flavor Innovation Lab</h3>
               </div>
-              <p className="offering-description">Workshops and masterclasses exploring the art and science behind exceptional taste.</p>
+              <p className="offering-description">Masterclasses and workshops exploring the intersection of culinary arts and AI automation for modern flavor creation.</p>
               <ul className="tags">
-                <li className="tag">Education</li>
+                <li className="tag">Innovation</li>
                 <li className="tag">Workshops</li>
-                <li className="tag">Knowledge</li>
+                <li className="tag">AI & Food</li>
               </ul>
             </li>
           </ul>
