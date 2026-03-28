@@ -42,8 +42,8 @@ function App() {
                 </nav>
               </div>
             </div>
-            <h2 className="sidebar-subtitle">AI automators</h2>
-            <p className="sidebar-description">We enhance and automate your data and needs through AI-driven innovation.</p>
+            <h2 className="sidebar-subtitle">AI ARCHITECTS</h2>
+            <p className="sidebar-description">Transforming complexity into clarity. We engineer custom AI-driven solutions that automate your repetitive tasks, giving you back the time to focus on what matters.</p>
           </div>
 
           <nav className="sidebar-nav">
@@ -80,10 +80,22 @@ function App() {
         <section id="about" className="content-section">
           <h2 className="section-title">About</h2>
           <p className="section-text">
-            Supavit is about <span className="highlight">passion for flavor</span> powered by <span className="highlight">intelligent automation</span>. Every creation tells a story of meticulous ingredient selection, time-honored techniques, and cutting-edge AI optimization.
-          </p>
-          <p className="section-text">
-            With years of experience in culinary arts, we've developed a distinctive approach to flavor curation that honors tradition while embracing innovation. From sourcing premium ingredients to perfecting recipes through AI-driven analysis, every detail matters.
+            At Supavit, we don’t believe in one-size-fits-all automation. In a world saturated with 
+            generic tools, we focus on building <span className="highlight">custom-engineered solutions </span> 
+            that align perfectly with your unique business logic. Our journey started with a 
+            simple observation: most companies lose countless hours to manual bottlenecks 
+            that could be solved with the right technical architecture.
+          < br /> < br />
+            Our approach is built on <span className="highlight">technical precision</span> and 
+            deep analysis. We dive into your current workflows to identify exactly where AI 
+            can make the most impact. By engineering high-performance automations, 
+            we transform complex data into <span className="highlight">streamlined assets</span>. 
+            We take care of the technical complexity, so you can focus on high-level strategy and growth.
+          <br /> < br />
+            We are committed to delivering scalable tools that evolve alongside your business. 
+            Whether it’s automating repetitive tasks or architecting a complete AI-driven workflow, 
+            our goal is to <span className="highlight">maximize your time efficiency</span> and 
+            provide a long-term competitive edge.
           </p>
         </section>
 
