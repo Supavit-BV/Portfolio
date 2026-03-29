@@ -62,8 +62,7 @@ body {
   left: var(--mouse-x);
   transform: translate(-50%, -50%);
   transition: top 0.1s ease-out, left 0.1s ease-out;
-  mix-blend-mode: screen;
-  opacity: 0.8;
+  opacity: 0.4;
 }
 
 /* Sidebar / Header */
@@ -225,18 +224,16 @@ body {
 .main-content {
   padding: 80px 80px 80px 80px;
   max-width: none;
-  z-index: 2;
   position: relative;
+  isolation: isolate;
 }
 
 .content-section {
-  position: relative;
-  z-index: 3;
   margin-bottom: 80px;
   display: flex;
-  flex-direction: column; /* Dit zorgt dat alles onder elkaar komt */
+  flex-direction: column;
   gap: 18px;
-  height: auto; /* Zorg dat dit op auto staat en NIET op een vaste px waarde */
+  height: auto;
 }
 
 .section-title {
@@ -959,4 +956,62 @@ body {
   .archive-table thead th:last-child  { padding-right: 20px; }
 
   .hide-mobile { display: none; }
+}
+/* ── Archive back button ─────────────────────────────────── */
+.archive-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-text);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.archive-back:hover {
+  color: var(--secondary);
+}
+
+/* ── Archive inline detail view ─────────────────────────── */
+.archive-detail-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.2s ease;
+}
+
+.archive-detail-media {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2a1a1a, #1a1a2a);
+  flex-shrink: 0;
+}
+
+.archive-detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.archive-detail-content {
+  padding: 28px 32px 32px;
+}
+
+@media (max-width: 640px) {
+  .archive-detail-content {
+    padding: 20px;
+  }
+
+  .archive-detail-media {
+    height: 150px;
+  }
 }

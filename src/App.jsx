@@ -1,26 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [activeNav, setActiveNav] = useState('about')
   const [selectedProject, setSelectedProject] = useState(null)
   const [showArchive, setShowArchive] = useState(false)
-  const [returnToArchive, setReturnToArchive] = useState(false)
-  const returnToArchiveRef = useRef(false)
+  const [archiveProject, setArchiveProject] = useState(null)
 
-  // ─────────────────────────────────────────────────────────
-  // PROJECTS
-  // featured: true  → getoond op de homepage
-  // featured: false → enkel zichtbaar in het archief
-  // Voeg nieuwe projecten toe met featured: false om ze enkel
-  // in het archief te tonen, of true om ze ook op home te zetten.
-  // ─────────────────────────────────────────────────────────
   const projects = [
     {
       id: 'real-estate-renovation',
       title: "Real Estate Intelligence Platform",
       shortDesc: "A full-stack real estate intelligence platform with multi-source scrapers, AI-driven ROI scoring, and automated auction monitoring to support investment decision-making.",
       fullDesc: "This platform aggregates property data from multiple Belgian real estate sources — ImmoWeb, ImmoScoop, Biddit, Notaris and others — using Selenium-based scrapers orchestrated via systemd services. A modular microservices architecture ties together a React/TypeScript frontend, Express.js backend, PostgreSQL database, MinIO for image storage, and Qdrant for vector search. At its core is a property analysis pipeline that combines AI-driven ROI scoring with geographic heatmaps to surface investment opportunities at a glance. An integrated auction monitoring system captures real-time bid data, while LLM-assisted workflows automate EPC energy certificate classification and interpretation. The full stack runs containerized via Docker with CI/CD pipelines ensuring automated re-scraping for data freshness, centralized logging, and structured data governance — built from the ground up to scale alongside a growing investment portfolio.",
-      tags: ["microservices", "Airflow", "Qdrant", "PostgreSQL", "MinIO","Docker", "Scrapers", "VLM", "LLM" ],
+      tags: ["microservices", "Airflow", "Qdrant", "PostgreSQL", "MinIO", "Docker", "Scrapers", "VLM", "LLM"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2025 - Present",
       featured: true,
@@ -49,7 +41,7 @@ function App() {
       id: 'neural-content',
       title: "Neural Content Pipeline",
       shortDesc: "An autonomous system that generates, formats, and schedules multi-platform content.",
-      fullDesc: "Dit systeem maakt gebruik van geavanceerde LLM-architecturen om onderzoek te doen en creatieve teksten te schrijven in een specifieke brand voice. De workflow plant de content vervolgens in op diverse kanalen, waardoor consistentie gegarandeerd is.",
+      fullDesc: "This system uses advanced LLM architectures to conduct research and generate creative content in a specific brand voice. The workflow then schedules the content across various channels, ensuring consistency.",
       tags: ["n8n", "LLM", "AI"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2024",
@@ -69,7 +61,7 @@ function App() {
       id: 'predictive-voka',
       title: "Predictive Analytics Engine",
       shortDesc: "Time-series prediction pipelines designed to forecast business trends and customer behavior.",
-      fullDesc: "Developed a Full ETL pipline with Vlaams Netwerk van Ondernemingen (VOKA) CRM data, predicting campaignattendance, Marketing volume allowance. Utilized Machine Learning models for accurate data-drive predictions.",
+      fullDesc: "Developed a Full ETL pipline with Vlaams Netwerk van Ondernemingen (VOKA) CRM data, predicting campaign attendance, Marketing volume allowance. Utilized Machine Learning models for accurate data-driven predictions.",
       tags: ["Scikit-learn", "Power BI", "Machine Learning"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2023",
@@ -79,7 +71,7 @@ function App() {
       id: 'predictive-flight',
       title: "Predictive flight data",
       shortDesc: "ETL pipelines for analysis of the flight data.",
-      fullDesc: "Scraped data from multiple Airline sites, to builld ETL pipelines for analysis of the flight data. Ultilized PowerBI, Machine Learning algorithms for efficient data modeling and reporting.",
+      fullDesc: "Scraped data from multiple Airline sites, to build ETL pipelines for analysis of the flight data. Utilized PowerBI, Machine Learning algorithms for efficient data modeling and reporting.",
       tags: ["Scikit-learn", "Power BI", "Machine Learning"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2022",
@@ -111,15 +103,12 @@ function App() {
 
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
-        if (document.querySelector('.modal:not(.archive-modal)')) {
-          setSelectedProject(null)
-          if (returnToArchiveRef.current) {
-            returnToArchiveRef.current = false
-            setReturnToArchive(false)
-            setTimeout(() => setShowArchive(true), 150)
-          }
-        } else {
+        if (archiveProject) {
+          setArchiveProject(null)
+        } else if (showArchive) {
           setShowArchive(false)
+        } else {
+          setSelectedProject(null)
         }
       }
     }
@@ -130,36 +119,23 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('keydown', handleEsc)
     }
-  }, [])
+  }, [archiveProject, showArchive])
 
-  // Vergrendel scroll wanneer een modal open is
   useEffect(() => {
     const isOpen = !!selectedProject || showArchive
     document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [selectedProject, showArchive])
 
+  const closeArchive = () => {
+    setShowArchive(false)
+    setArchiveProject(null)
+  }
+
   const scrollToSection = (id) => {
     setActiveNav(id)
     const element = document.getElementById(id)
     if (element) element.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  // Open detail vanuit archief (kleine vertraging voor vloeiende overgang)
-  const openFromArchive = (project) => {
-    setShowArchive(false)
-    setReturnToArchive(true)
-    returnToArchiveRef.current = true
-    setTimeout(() => setSelectedProject(project), 150)
-  }
-
-  const closeProject = () => {
-    setSelectedProject(null)
-    if (returnToArchiveRef.current) {
-      setReturnToArchive(false)
-      returnToArchiveRef.current = false
-      setTimeout(() => setShowArchive(true), 150)
-    }
   }
 
   return (
@@ -247,11 +223,11 @@ function App() {
         </footer>
       </main>
 
-      {/* ── Project detail modal ── */}
+      {/* ── Project detail modal (homepage featured) ── */}
       {selectedProject && (
-        <div className="modal-overlay" onClick={closeProject}>
+        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeProject} aria-label="Sluiten">✕</button>
+            <button className="modal-close" onClick={() => setSelectedProject(null)} aria-label="Sluiten">✕</button>
             <div className="modal-media">
               <img src={selectedProject.media} alt={selectedProject.title} />
             </div>
@@ -270,47 +246,76 @@ function App() {
 
       {/* ── Project archief modal ── */}
       {showArchive && (
-        <div className="modal-overlay archive-overlay" onClick={() => setShowArchive(false)}>
+        <div className="modal-overlay archive-overlay" onClick={closeArchive}>
           <div className="archive-modal" onClick={(e) => e.stopPropagation()}>
+
             <div className="archive-header">
-              <div>
-                <h2 className="archive-title">Project Archive</h2>
-                <p className="archive-subtitle">{projects.length} projects</p>
-              </div>
-              <button className="modal-close archive-modal-close" onClick={() => setShowArchive(false)} aria-label="Sluiten">✕</button>
+              {archiveProject ? (
+                <button className="archive-back" onClick={() => setArchiveProject(null)}>
+                  ← Back to archive
+                </button>
+              ) : (
+                <div>
+                  <h2 className="archive-title">Project Archive</h2>
+                  <p className="archive-subtitle">{projects.length} projects</p>
+                </div>
+              )}
+              <button className="modal-close archive-modal-close" onClick={closeArchive} aria-label="Sluiten">✕</button>
             </div>
 
-            <div className="archive-body">
-              <table className="archive-table">
-                <thead>
-                  <tr>
-                    <th>Year</th>
-                    <th>Project</th>
-                    <th className="hide-mobile">Tags</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {projects.map((project) => (
-                    <tr key={project.id} className="archive-row" onClick={() => openFromArchive(project)}>
-                      <td className="archive-year">{project.year}</td>
-                      <td className="archive-name">
-                        <span>{project.title}</span>
-                        <p className="archive-short-desc">{project.shortDesc}</p>
-                      </td>
-                      <td className="archive-tags-cell hide-mobile">
-                        <div className="archive-tags">
-                          {project.tags.map(tag => (
-                            <span key={tag} className="archive-tag">{tag}</span>
-                          ))}
-                        </div>
-                      </td>
-                      <td className="archive-arrow">→</td>
+            {/* Lijst view */}
+            {!archiveProject && (
+              <div className="archive-body">
+                <table className="archive-table">
+                  <thead>
+                    <tr>
+                      <th>Year</th>
+                      <th>Project</th>
+                      <th className="hide-mobile">Tags</th>
+                      <th></th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {projects.map((project) => (
+                      <tr key={project.id} className="archive-row" onClick={() => setArchiveProject(project)}>
+                        <td className="archive-year">{project.year}</td>
+                        <td className="archive-name">
+                          <span>{project.title}</span>
+                          <p className="archive-short-desc">{project.shortDesc}</p>
+                        </td>
+                        <td className="archive-tags-cell hide-mobile">
+                          <div className="archive-tags">
+                            {project.tags.map(tag => (
+                              <span key={tag} className="archive-tag">{tag}</span>
+                            ))}
+                          </div>
+                        </td>
+                        <td className="archive-arrow">→</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* Detail view binnen archief */}
+            {archiveProject && (
+              <div className="archive-detail-body">
+                <div className="archive-detail-media">
+                  <img src={archiveProject.media} alt={archiveProject.title} />
+                </div>
+                <div className="archive-detail-content">
+                  <div className="modal-tags">
+                    {archiveProject.tags.map(tag => (
+                      <span key={tag} className="modal-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <h2 className="modal-title">{archiveProject.title}</h2>
+                  <p className="modal-desc">{archiveProject.fullDesc}</p>
+                </div>
+              </div>
+            )}
+
           </div>
         </div>
       )}
