@@ -746,6 +746,36 @@ body {
   line-height: 1.8;
 }
 
+/* ── GitHub link in modal ───────────────────────────────── */
+.modal-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: rgba(221, 218, 204, 0.06);
+  border: 1px solid rgba(221, 218, 204, 0.15);
+  border-radius: 6px;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-github-link:hover {
+  background: rgba(221, 218, 204, 0.12);
+  border-color: rgba(221, 218, 204, 0.35);
+  color: #fff;
+}
+
+.modal-github-link svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
 @media (max-width: 640px) {
   .modal-body {
     padding: 20px;
