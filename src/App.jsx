@@ -55,7 +55,7 @@ function App() {
       fullDesc: "Raw data is retrieved from various application and stored in AWS in PostgreSQL databases via Airflow pipelines its transformed, cleaned, and structured to S3 bucket to transport it to Fabric. The result is an interactive PowerBI dashboard that predicts trends and accelerates decision-making.",
       tags: ["Airflow", "AWS", "PowerBI", "Fabric", "Automation"],
       media: "/assets/Icon_BG_Supavit.png",
-      gifMedia: "public/assets/intelligence_dashboard.gif",
+      gifMedia: "/assets/intelligence_dashboard.gif",
       year: "2025",
       featured: true,
     },
