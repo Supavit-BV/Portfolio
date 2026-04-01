@@ -45,7 +45,7 @@ function App() {
       tags: ["n8n", "LLM", "AI"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2024",
-      featured: true,
+      featured: false,
     },
     {
       id: 'traffic-analysis',
@@ -55,7 +55,7 @@ function App() {
       tags: ["OpenCV", "Automation", "Computer Vision", "Streamlit", "YOLO", "NoSQL", "Business Intelligence"],
       media: "/assets/Icon_BG_Supavit.png",
       year: "2024",
-      featured: false,
+      featured: true,
     },
     {
       id: 'predictive-voka',
