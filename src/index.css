@@ -657,10 +657,14 @@ body {
   border-radius: 10px;
   width: 100%;
   max-width: 560px;
-  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(221,218,204,0.15) transparent;
 }
 
 @keyframes modalIn {
@@ -695,16 +699,22 @@ body {
 
 .modal-media {
   width: 100%;
-  height: 200px;
+  max-height: 360px;
   overflow: hidden;
   background: linear-gradient(135deg, #2a1a1a, #1a1a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .modal-media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  opacity: 0.92;
+  display: block;
 }
 
 .modal-body {
@@ -746,6 +756,36 @@ body {
   line-height: 1.8;
 }
 
+/* ── GitHub link in modal ───────────────────────────────── */
+.modal-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: rgba(221, 218, 204, 0.06);
+  border: 1px solid rgba(221, 218, 204, 0.15);
+  border-radius: 6px;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-github-link:hover {
+  background: rgba(221, 218, 204, 0.12);
+  border-color: rgba(221, 218, 204, 0.35);
+  color: #fff;
+}
+
+.modal-github-link svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
 @media (max-width: 640px) {
   .modal-body {
     padding: 20px;
@@ -756,7 +796,7 @@ body {
   }
 
   .modal-media {
-    height: 150px;
+    max-height: 220px;
   }
 }
 
